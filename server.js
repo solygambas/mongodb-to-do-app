@@ -6,6 +6,11 @@ let { connectionString, connectionAuth } = require("./config");
 let app = express();
 let db;
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
 app.use(express.static("public"));
 
 mongodb.connect(
@@ -13,7 +18,7 @@ mongodb.connect(
   { useNewUrlParser: true, useUnifiedTopology: true },
   function (err, client) {
     db = client.db();
-    app.listen(3000);
+    app.listen(port);
   }
 );
 
