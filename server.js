@@ -1,6 +1,7 @@
 let express = require("express");
 let mongodb = require("mongodb");
-let connectionString = require("./config");
+let sanitizeHTML = require("sanitize-html");
+let { connectionString, connectionAuth } = require("./config");
 
 let app = express();
 let db;
@@ -18,6 +19,16 @@ mongodb.connect(
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(passwordProtected);
+
+function passwordProtected(req, res, next) {
+  res.set("WWW-Authenticate", 'Basic realm="Simple Todo App"');
+  if (req.headers.authorization == connectionAuth) {
+    next();
+  } else {
+    res.status(401).send("Authentication required");
+  }
+}
 
 app.get("/", function (req, res) {
   db.collection("items")
@@ -46,21 +57,13 @@ app.get("/", function (req, res) {
           </div>
           
           <ul id="item-list" class="list-group pb-5">
-            ${items
-              .map(function (item) {
-                return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                <span class="item-text">${item.text}</span>
-                <div>
-                  <button class="edit-me btn btn-secondary btn-sm mr-1" data-id="${item._id}">Edit</button>
-                  <button class="delete-me btn btn-danger btn-sm" data-id="${item._id}">Delete</button>
-                </div>
-              </li>`;
-              })
-              .join("")}
           </ul>
           
         </div>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+        let items = ${JSON.stringify(items)}
+        </script>
         <script src="/browser.js"></script>
       </body>
       </html>`);
@@ -68,18 +71,23 @@ app.get("/", function (req, res) {
 });
 
 app.post("/create-item", function (req, res) {
-  db.collection("items").insertOne({ text: req.body.text }, function (
-    err,
-    info
-  ) {
+  let safeText = sanitizeHTML(req.body.text, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+  db.collection("items").insertOne({ text: safeText }, function (err, info) {
     res.json(info.ops[0]);
   });
 });
 
 app.post("/update-item", function (req, res) {
+  let safeText = sanitizeHTML(req.body.text, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
   db.collection("items").findOneAndUpdate(
     { _id: new mongodb.ObjectId(req.body.id) },
-    { $set: { text: req.body.text } },
+    { $set: { text: safeText } },
     function () {
       res.send("Success");
     }

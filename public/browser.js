@@ -1,15 +1,23 @@
-// Create Feature
-let createField = document.getElementById("create-field");
-
 function itemTemplate(item) {
   return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-    <span class="item-text">${item.text}</span>
-    <div>
-      <button class="edit-me btn btn-secondary btn-sm mr-1" data-id="${item._id}">Edit</button>
-      <button class="delete-me btn btn-danger btn-sm" data-id="${item._id}">Delete</button>
-    </div>
-  </li>`;
+      <span class="item-text">${item.text}</span>
+      <div>
+        <button class="edit-me btn btn-secondary btn-sm mr-1" data-id="${item._id}">Edit</button>
+        <button class="delete-me btn btn-danger btn-sm" data-id="${item._id}">Delete</button>
+      </div>
+    </li>`;
 }
+
+// Initial Page Load Render
+let ourHTML = items
+  .map(function (item) {
+    return itemTemplate(item);
+  })
+  .join("");
+document.getElementById("item-list").insertAdjacentHTML("beforeend", ourHTML);
+
+// Create Feature
+let createField = document.getElementById("create-field");
 
 document.getElementById("create-form").addEventListener("submit", function (e) {
   e.preventDefault();
