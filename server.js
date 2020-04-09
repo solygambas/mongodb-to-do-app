@@ -68,8 +68,11 @@ app.get("/", function (req, res) {
 });
 
 app.post("/create-item", function (req, res) {
-  db.collection("items").insertOne({ text: req.body.item }, function () {
-    res.redirect("/");
+  db.collection("items").insertOne({ text: req.body.text }, function (
+    err,
+    info
+  ) {
+    res.json(info.ops[0]);
   });
 });
 
