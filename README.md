@@ -4,6 +4,8 @@ A simple to-do app to understand MongoDB Atlas, using Node and Express.
 
 ## Demo
 
+![](snapshot.png)
+
 [See Demo deployed on Heroku](https://mongodb-to-do-app.herokuapp.com/)
 
 Note: send me an email to receive credentials if you want to see the demo.
