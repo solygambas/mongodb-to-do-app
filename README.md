@@ -8,7 +8,7 @@ A simple to-do app to understand MongoDB Atlas, using Node and Express.
 
 Note: send me an email to receive credentials if you want to see the demo.
 
-![](snapshot.png)
+![](screenshot.png)
 
 ## MongoDB Atlas - CRUD
 
