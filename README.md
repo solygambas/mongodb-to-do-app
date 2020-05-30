@@ -1,6 +1,6 @@
 # To-Do App
 
-A simple to-do app to understand MongoDB Atlas, using Node and Express.
+A simple to-do app to understand MongoDB Atlas, using Node.js and Express.
 
 ## Demo
 
