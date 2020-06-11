@@ -8,7 +8,11 @@ A simple to-do app to understand MongoDB Atlas, using Node.js and Express.
 
 Note: send me an email to receive credentials if you want to see the demo.
 
-![](screenshot.png)
+<p align="center">
+  <a href="https://mongodb-to-do-app.herokuapp.com/">
+    <img src="screenshot.png" alt="See Demo deployed on Heroku">
+  </a>
+</p>
 
 ## MongoDB Atlas - CRUD
 
