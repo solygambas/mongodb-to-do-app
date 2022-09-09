@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-    "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/solygambas/mongodb-to-do-app.git"
   },
@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/solygambas/mongodb-to-do-app#readme",
   "dependencies": {
+    "dotenv": "^16.0.2",
     "express": "^4.17.1",
-    "mongodb": "^3.5.5",
+    "mongodb": "^3.5.7",
     "nodemon": "^2.0.3",
     "sanitize-html": "^1.22.1"
   }

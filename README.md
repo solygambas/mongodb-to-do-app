@@ -4,13 +4,13 @@ A simple to-do app to understand MongoDB Atlas, using Node.js and Express.
 
 ## Demo
 
-[See Demo deployed on Heroku](https://mongodb-to-do-app.herokuapp.com/)
+[See Demo deployed on Render](https://mongodb-to-do-app.onrender.com/)
 
-Note: send me an email to receive credentials if you want to see the demo.
+(user: learn, password: javascript)
 
 <p align="center">
-  <a href="https://mongodb-to-do-app.herokuapp.com/">
-    <img src="screenshot.png" alt="See Demo deployed on Heroku">
+  <a href="https://mongodb-to-do-app.onrender.com/">
+    <img src="screenshot.png" alt="See Demo deployed on Render">
   </a>
 </p>
 
@@ -36,8 +36,8 @@ Note: send me an email to receive credentials if you want to see the demo.
 - adding basic access authentication with WWW-Authenticate.
 - sanitizing items created or edited with sanitize-html.
 
-## Heroku
+## Render
 
-- deploying on Heroku.
+- deploying on Render.
 
 Based on [Learn JavaScript: Full-Stack from Scratch](https://www.udemy.com/course/learn-javascript-full-stack-from-scratch/) by Brad Schiff (2019).
